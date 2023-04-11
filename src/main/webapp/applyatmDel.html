@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Apply For ATM</title>
+<style>
+	#main{
+		width:500px;
+		margin:100px auto;
+		padding:20px;
+		box-shadow:3px 3px 10px;
+	}
+	h4{
+		display:inline;
+		color:red;
+		text-align:center;
+	}
+	.heading{
+		background:#e9e9e9;
+		text-align:center;
+	}
+</style>
+</head>
+<body>
+	<div id="main">
+	  <div id="sub1"><h2>ATM Application Form</h2></div>
+	  <div id="sub2">
+		<form action="applyatm" method="post">
+		  <table>
+			<tr><td>Account Number:</td><td><input type="text" name="accno" required/></td></tr>
+			<tr><td>Account holder Name:</td><td><input type="text" name="name" required/></td></tr>
+			<tr><td>Card Type:</td><td>
+									<select name="ctype">
+									  <option value="default">--Select--</option>
+									  <option value="Rupay">Rupay Card</option>
+									  <option value="Visa">Visa Card</option>
+									  <option value="Master">Master Card</option>
+									</select>
+									</td></tr>
+			<tr><td>Mail Id:</td><td><input type="email" name="mid"/></td></tr>
+			<tr><td>Phone Number:</td><td><input type="text" name="phno"/></td></tr>
+			<tr><td>Set PIN:</td><td><input type="text" name="pin1"/></td></tr>
+			<tr><td>Re-Enter PIN:</td><td><input type="text" name="pin2"/></td></tr>
+			<tr><td></td><td><input type="submit" value="Apply"/></td></tr>
+		  </table>
+		 </form>
+	  </div>
+	</div>
+</body>
+</html>

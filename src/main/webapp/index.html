@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page HTML</title>
+<link rel="stylesheet" href="index.css">
+<script src="captcha.js"></script>
+<script src="index2.js"></script>
+<script src="validation.js"></script>
+</head>
+<body>
+<div id="main">
+  <div id="d1"></div>
+  <div id="d2">
+    <div id="d2d1"></div>
+    <div id="d2d2">
+      <div id="sec1">
+      
+        <!-- Admin Login Form -->
+        <div id="adlogin" class="frmstyle" style="display:none">
+        <div><h2>Admin Login</h2></div>
+		  <form action="adminlogin" method="post" onsubmit="return verifyCaptcha(0);">
+			<table>
+				<tr><td>Admin Id:</td><td><input type="text" name="id" onkeypress="return notspecial(event);"/></td></tr>
+				<tr><td>Enter Password:</td><td><input type="password" name="pass"/></td></tr>
+				<tr><td>Captcha:</td><td><output class="cap1"></output></td></tr>
+            	<tr><td></td><td>
+            			<input type="text" class="cap2" placeholder="enter text as above"/><br/>
+            			<output class="error"></output>
+            			</td></tr>
+				<tr><td><input type="hidden" name="logtime"/></td>
+					<td><input type="submit" value="Login"/></td></tr>
+			</table>
+		  </form>
+        </div>
+      
+      
+      <!-- Customer Login Form -->
+      <div id="ulogin" class="frmstyle" style="display:none">
+        <div><h2>Customer Login</h2></div>
+        <div class="sub1">
+			<button>User Login</button>
+			<button onclick="uReg();">New User</button>
+		</div><br/></br>
+		<div id="sub2">
+			<form action="userlogin" method="post" onsubmit="return verifyCaptcha(1);">
+			<table>
+				<tr><td>Mail Id:</td><td><input type="email" name="mid" onkeypress="return notspecial(event);"/></td></tr>
+				<tr><td>Enter Password:</td><td><input type="password" name="pass"/></td></tr>
+				<tr><td>Captcha:</td><td><output class="cap1"></output></td></tr>
+            	<tr><td></td><td>
+            			<input type="text" class="cap2" placeholder="enter text as above"/><br/>
+            			<output class="error"></output>
+            			</td></tr>
+				<tr><td><input type="hidden" name="logintime"/></td>
+					<td><input type="submit" value="Login"/>&nbsp;&nbsp;
+						<a onclick="forget()">Forget pass?</a>	
+					</td>
+				</tr>
+			</table>
+		</form>
+		</div>
+      </div>
+      
+      <!-- Customer Registration -->
+        <div id="ureg" class="frmstyle" style="display:none">
+          <div><h2>New Customer Registration</h2></div>
+          <div class="sub1">
+            <button onclick="uLogin();">User Login</button>
+            <button>New User</button>
+		</div><br/></br>
+		<div id="sub2">
+			<form action="userreg" method="post" onsubmit="return verifyCaptcha(2);">
+				<table>
+				<tr><td>First Name:</td><td><input type="text" name="fname" onkeypress="return stringonly(event);"/></td></tr>
+				<tr><td>Last Name:</td><td><input type="text" name="lname" onkeypress="return stringonly(event);"/></td></tr>
+				<tr><td>Mail Id:</td><td><input type="email" name="mid"/></td></tr>
+				<tr><td>Phone no:</td><td><input type="text" name="phno" onkeypress="return numonly(event);"/></td></tr>
+				<tr><td>Enter Password:</td><td><input type="password" name="pass" id="p1" onkeypress="return notspecial(event);"/></td></tr>
+				<tr><td>Re-enter Password:</td>
+					<td><input type="password" name="pass1" id="p2"/><br/>
+					<output id="errr"></output>
+					</td></tr>
+				<tr><td>Captcha:</td><td><output class="cap1"></output></td></tr>
+            	<tr><td></td><td>
+            			<input type="text" class="cap2" placeholder="enter text as above"/><br/>
+            			<output class="error"></output>
+            			</td></tr>
+				<tr><td></td><td><input type="submit" value="Register" onclick="verifyPass();"/></td></tr>
+			</table>
+			</form>
+		</div>
+        </div>
+        <script>
+          function verifyPass(){
+        	  var x = document.querySelector("#p1");
+        	  var y = document.querySelector("#p2");
+        	  var z = document.querySelector("#errr");
+        	  if(x.value!==y.value){
+        		  x.style.border="2px solid red";
+        		  y.style.border="2px solid red";
+        		  z.innerHTML="<font color='red'>Password mismatched</font>";
+        		  return false;
+        	  }
+          }
+        </script>
+      
+      <!-- Forget Password -->
+      
+        <div id="forget" class="frmstyle" style="display:none">
+          <div><h2>Forget Password</h2></div>
+		<form action="forgetpass" method="post" onsubmit="return verifyCaptcha(3);">
+			<table>
+				<tr><td>Mail Id:</td><td><input type="email" name="mid"/></td></tr>
+				<tr><td>Phone no:</td><td><input type="text" name="phno" onkeypress="return numonly(event);"/></td></tr>
+				<tr><td>New Password:</td><td><input type="password" name="pass1" id="pass1" onkeypress="return notspecial(event);"/></td></tr>
+				<tr><td>Re-enter Password:</td>
+					<td><input type="password" name="pass2" id="pass2"/><br/>
+					<output id="perror"></output>
+					</td></tr>
+				<tr><td>Captcha:</td><td><output class="cap1"></output></td></tr>
+            	<tr><td></td><td>
+            			<input type="text" class="cap2" placeholder="enter text as above"/><br/>
+            			<output class="error"></output>
+            			</td></tr>
+				<tr><td></td><td><input type="submit" value="Reset Password" onclick="vPass();"/></td>
+				</tr>
+			</table>
+		</form>
+        </div>
+        <script>
+          function vPass(){
+        	  var x = document.querySelector("#pass1");
+        	  var y = document.querySelector("#pass2");
+        	  var z = document.querySelector("#perror");
+        	  if(x.value!==y.value){
+        		  x.style.border="2px solid red";
+        		  y.style.border="2px solid red";
+        		  z.innerHTML="<font color='red'>Password mismatched</font>";
+        		  return false;
+        	  }
+          }
+        </script>
+      
+      
+        <div id="showtrans" class="frmstyle" style="display:none">
+          <div><h2>Login to use Banking facilities</h2></div>
+          <form action="translogin" method="post" onsubmit="return verifyCaptcha(4);">
+            <table>
+              <tr><td>Account Number:</td><td><input type="text" name="accno" onkeypress="return numonly(event);"/></td></tr>
+              <tr><td>4 Digit ATM Pin:</td><td><input type="text" name="pin" onkeypress="return numonly(event);"/></td></tr>
+              <tr><td>Captcha:</td><td><output class="cap1"></output></td></tr>
+              <tr><td></td><td>
+            			<input type="text" class="cap2" placeholder="enter text as above"/><br/>
+            			<output class="error"></output>
+            			</td></tr>
+              <tr><td></td><td><input type="submit" value="Login"/></td></tr>
+            </table>
+          </form>
+        </div>
+      
+      </div><!-- Sec1 -->
+      
+      <div id="sec2">
+      	<div>
+        <a><button onclick="adLogin()">Admin</button></a>
+        <a><button onclick="uLogin()">Customer</button></a>
+        <a><button onclick="showTrans()">Banking</button></a>
+        </div>
+      </div>
+      
+      
+      
+    </div><!-- d2d2 -->
+  </div>
+</div>
+</body>
+</html>

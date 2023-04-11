@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin HTML</title>
+<link rel="stylesheet" href="admin.css">
+<script src="admin1.js"></script>
+<script src="validation.js"></script>
+</head>
+<body>
+<div id="main">
+  <div id="d1"></div>
+  <div id="d2">
+    <div id="d2d1"></div>
+    <div id="d2d2">
+      <div id="option">
+        <a href="checkformadmin"><button>Register Customer</button></a>
+        <button onclick="edit()">Edit Customer</button>
+        <button onclick="actInact()">Active/Inactive Customer</button>
+        <!-- <button onclick="del();">Delete Customer</button> -->
+        <a href="showallcust"><button>All Customer Details</button></a>
+        <a href="adlogout"><button style="background:red;">Logout</button></a>
+        </div>
+      </div>
+      
+      
+      <div id="edit" class="frmstyle" style="display:none">
+        <h2>Edit Customer</h2>
+        <form action="editcust" method="post">
+          <table>
+            <tr><td>Account number:</td><td><input type="text" name="accno" onkeypress="return numonly(event);"/></td></tr>
+            <tr><td>Enter new details</td><td></td></tr>
+            <tr><td>Email Id:</td><td><input type="email" name="mid"/></td></tr>
+            <tr><td>Phone number:</td><td><input type="text" name="phno" onkeypress="return numonly(event);"/></td></tr>
+            <tr><td></td><td><input type="submit" value="Edit"/></td></tr>
+          </table>
+        </form>
+      </div>
+      
+      <div id="actinact" class="frmstyle" style="display:none">
+        <h3>Make customer's account Active/Inactive</h3>
+        <form action="actinact" method="post">
+        	<table>
+        		<tr><td>Account number:</td><td><input type="text" name="accno" onkeypress="return numonly(event);"/></td></tr>
+        		<tr><td><input type="radio" name="status" value="active"/>Active</td>
+        			<td><input type="radio" name="status" value="inactive"/>In-Active</td></tr>
+        		<tr><td></td><td><input type="submit" value="Submit"/></td></tr>
+        	</table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

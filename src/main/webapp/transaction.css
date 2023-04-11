@@ -1,0 +1,37 @@
+@charset "ISO-8859-1";
+body{
+	background-image:url("images/background.jpeg");
+	background-size:cover;
+}
+#maindiv{
+	display:flex;
+}
+#d1{
+	width:400px;
+	height:700px;
+	background-image:url("images/side.png");
+	background-size:cover;
+	background-position:center center;
+}
+#d2{
+	width:100%;
+}
+#d2d1{
+	margin:50px;
+	display:flex;
+}
+#d2d1 button{
+	width:200px;
+	height:40px;
+}
+#deposit input{
+	width:100px;
+	height:30px;
+}
+.frmstyle{
+	width:400px;
+	margin:50px auto;
+	padding:20px;
+	background:#f0f0f0;
+	box-shadow:3px 3px 10px;
+}
